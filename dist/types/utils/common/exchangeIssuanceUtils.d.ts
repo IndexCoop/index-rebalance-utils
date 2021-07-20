@@ -1,0 +1,10 @@
+import { BigNumber } from "ethers";
+import { StandardTokenMock, WETH9 } from "@utils/contracts/index";
+export declare const getAllowances: (tokens: StandardTokenMock[], owner: string, spenders: string[]) => Promise<BigNumber[]>;
+export declare const getIssueSetForExactETH: (setToken: any, ethInput: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<BigNumber>;
+export declare const getIssueSetForExactToken: (setToken: any, inputToken: string, inputAmount: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<BigNumber>;
+export declare const getIssueExactSetFromETH: (setToken: any, amountSet: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<BigNumber>;
+export declare const getIssueExactSetFromToken: (setToken: any, inputToken: StandardTokenMock | WETH9, amountSet: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<any>;
+export declare const getIssueExactSetFromTokenRefund: (setToken: any, inputToken: StandardTokenMock | WETH9, inputAmount: BigNumber, amountSet: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<any>;
+export declare const getRedeemExactSetForETH: (setToken: any, amountSet: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<BigNumber>;
+export declare const getRedeemExactSetForToken: (setToken: any, outputToken: StandardTokenMock | WETH9, amountSet: BigNumber, uniswapRouter: any, uniswapFactory: any, sushiswapRouter: any, sushiswapFactory: any, weth: string) => Promise<any>;

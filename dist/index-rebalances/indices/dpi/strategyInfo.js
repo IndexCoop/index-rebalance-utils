@@ -1,0 +1,131 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.strategyInfo = void 0;
+var bignumber_1 = require("@ethersproject/bignumber");
+var common_1 = require("@setprotocol/index-coop-contracts/utils/common");
+var constants_1 = require("../../../utils/constants");
+var assetInfo_1 = require("../../assetInfo");
+var types_1 = require("../../types");
+exports.strategyInfo = {
+    YFI: {
+        address: assetInfo_1.ASSETS.YFI.address,
+        input: bignumber_1.BigNumber.from(36096),
+        maxTradeSize: common_1.ether(15),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    COMP: {
+        address: assetInfo_1.ASSETS.COMP.address,
+        input: bignumber_1.BigNumber.from(5048104),
+        maxTradeSize: common_1.ether(650),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    SNX: {
+        address: assetInfo_1.ASSETS.SNX.address,
+        input: bignumber_1.BigNumber.from(151684080),
+        maxTradeSize: common_1.ether(10000),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    MKR: {
+        address: assetInfo_1.ASSETS.MKR.address,
+        input: bignumber_1.BigNumber.from(901683),
+        maxTradeSize: common_1.ether(31),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    REN: {
+        address: assetInfo_1.ASSETS.REN.address,
+        input: bignumber_1.BigNumber.from(881153018),
+        maxTradeSize: common_1.ether(36000),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(900),
+        currentUnit: constants_1.ZERO,
+    },
+    KNC: {
+        address: assetInfo_1.ASSETS.KNC.address,
+        input: bignumber_1.BigNumber.from(204614446),
+        maxTradeSize: common_1.ether(3000),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    LRC: {
+        address: assetInfo_1.ASSETS.LRC.address,
+        input: bignumber_1.BigNumber.from(1245991468),
+        maxTradeSize: common_1.ether(15000),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(900),
+        currentUnit: constants_1.ZERO,
+    },
+    BAL: {
+        address: assetInfo_1.ASSETS.BAL.address,
+        input: bignumber_1.BigNumber.from(10799858),
+        maxTradeSize: common_1.ether(5000),
+        exchange: types_1.exchanges.BALANCER,
+        coolOffPeriod: bignumber_1.BigNumber.from(900),
+        currentUnit: constants_1.ZERO,
+    },
+    UNI: {
+        address: assetInfo_1.ASSETS.UNI.address,
+        input: bignumber_1.BigNumber.from(519857388),
+        maxTradeSize: common_1.ether(16750),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(900),
+        currentUnit: constants_1.ZERO,
+    },
+    AAVE: {
+        address: assetInfo_1.ASSETS.AAVE.address,
+        input: bignumber_1.BigNumber.from(12492713),
+        maxTradeSize: common_1.ether(1400),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    MTA: {
+        address: assetInfo_1.ASSETS.MTA.address,
+        input: bignumber_1.BigNumber.from(24894863),
+        maxTradeSize: common_1.ether(5800),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    SUSHI: {
+        address: assetInfo_1.ASSETS.SUSHI.address,
+        input: bignumber_1.BigNumber.from(148978846),
+        maxTradeSize: common_1.ether(80000),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    CREAM: {
+        address: assetInfo_1.ASSETS.CREAM.address,
+        input: bignumber_1.BigNumber.from(685568),
+        maxTradeSize: common_1.ether(90),
+        exchange: types_1.exchanges.SUSHISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    FARM: {
+        address: assetInfo_1.ASSETS.FARM.address,
+        input: bignumber_1.BigNumber.from(528505),
+        maxTradeSize: common_1.ether(195),
+        exchange: types_1.exchanges.UNISWAP,
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+    BADGER: {
+        address: assetInfo_1.ASSETS.BADGER.address,
+        input: bignumber_1.BigNumber.from(0),
+        maxTradeSize: common_1.ether(220),
+        exchange: types_1.exchanges.UNISWAP,
+        exchangeData: "0x00",
+        coolOffPeriod: bignumber_1.BigNumber.from(600),
+        currentUnit: constants_1.ZERO,
+    },
+};

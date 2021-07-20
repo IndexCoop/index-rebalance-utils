@@ -1,0 +1,10 @@
+import { BigNumber } from "@ethersproject/bignumber";
+export declare const preciseMul: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const preciseMulCeil: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const preciseMulCeilInt: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const preciseDiv: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const preciseDivCeil: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const preciseDivCeilInt: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const divDown: (a: BigNumber, b: BigNumber) => BigNumber;
+export declare const min: (valueOne: BigNumber, valueTwo: BigNumber) => BigNumber;
+export declare function sqrt(value: BigNumber): BigNumber;

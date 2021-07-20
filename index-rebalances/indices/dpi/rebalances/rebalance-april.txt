@@ -1,0 +1,105 @@
+The parameters for updating exchanges are:
+    components: ["0xa0246c9032bc3a600820415ae600c6388619a14d","0x2ba592f78db6436527729929aaf6c908497cb200"]
+    exchanges: ["1","2",]
+
+The parameters for updating maxTradeSizes are:
+    components: ["0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F","0x408e41876cCCDC0F92210600ef50372656052a38","0xc00e94Cb662C3520282E6f5717214004A7f26888","0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2","0xdd974D5C2e2928deA5F71b9825b8b646686BD200","0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984","0xa0246c9032bc3a600820415ae600c6388619a14d","0x2ba592f78db6436527729929aaf6c908497cb200","0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e","0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9","0x6b3595068778dd592e39a122f4f5a5cf09c90fe2","0xba100000625a3754423978a60c9317c58a424e3D","0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2"]
+    maxTradeSizes: ["10250000000000000000000","55000000000000000000000","192000000000000000000","5000000000000000000000","2100000000000000000000","17000000000000000000000","125000000000000000000","135000000000000000000","13200000000000000000","1200000000000000000000","72000000000000000000000","9900000000000000000000","40000000000000000000"]
+
+The parameters for updating coolOffPeriods are:
+    components: ["0xa0246c9032bc3a600820415ae600c6388619a14d","0x2ba592f78db6436527729929aaf6c908497cb200"]
+    coolOffPeriods: ["600","600"]
+
+The parameters for startRebalance are as follows:
+    newComponents: ["0x2ba592f78db6436527729929aaf6c908497cb200","0xa0246c9032bc3a600820415ae600c6388619a14d"]
+    newComponentsTargetUnits: ["11494761584286758","8735836649218458"]
+    oldComponentsTargetUnits: ["634658405971623","78788473605032862","2601486045753951436","15853853487137411","15492884802220908109","3597743715904927909","21916540930577894725","189888648686832159","3663738349392495226","218806327259722092","371361356974397180","2451805159185069535"]
+    positionMultiplier: 994832748042687048
+
+Trade Order is: uniswap,yfi,kyber-network,uniswap,yfi,compound,maker,kyber-network,uniswap,compound,snx,maker,ren,kyber-network,loopring,mta,cream,uniswap,compound,snx,maker,ren,kyber-network,loopring,mta,cream,farm,uniswap,compound,snx,maker,ren,kyber-network,loopring,mta,cream,uniswap,compound,snx,maker,ren,kyber-network,loopring,mta,cream,farm,uniswap,compound,snx,maker,ren,kyber-network,loopring,mta,cream,uniswap,compound,snx,maker,ren,kyber-network,loopring,cream,farm,uniswap,compound,snx,maker,ren,kyber-network,loopring,cream,farm,uniswap,compound,maker,kyber-network,loopring,balancer,cream,farm,uniswap,compound,maker,kyber-network,loopring,cream,farm,uniswap,compound,kyber-network,loopring,aave,cream,farm,uniswap,compound,kyber-network,loopring,aave,cream,farm,uniswap,compound,kyber-network,loopring,aave,cream,uniswap,compound,kyber-network,loopring,cream,farm,uniswap,compound,kyber-network,loopring,aave,cream,farm,uniswap,kyber-network,loopring,aave,cream,farm,uniswap,kyber-network,loopring,cream,farm,uniswap,kyber-network,loopring,sushi,cream,farm,uniswap,kyber-network,loopring,cream,farm,uniswap,kyber-network,loopring,sushi,cream,farm,uniswap,kyber-network,loopring,sushi,cream,farm,uniswap,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,farm,kyber-network,loopring,cream,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,loopring,kyber-network,kyber-network
+
+Trade Stats by components is as follows:
+    YFI:
+        currentUnit: 566411985921079
+        newUnit: 634658405971623
+        notionalInToken: 21740864367967851207
+        notionalInUSD: 799868
+        tradeNumber: 2
+    COMP:
+        currentUnit: 70285344407296533
+        newUnit: 78788473605032862
+        notionalInToken: 2708792321331721385384
+        notionalInUSD: 1215949
+        tradeNumber: 15
+    SNX:
+        currentUnit: 2383603243815950218
+        newUnit: 2601486045753951436
+        notionalInToken: 69409654624208065027424
+        notionalInUSD: 1308371
+        tradeNumber: 7
+    MKR:
+        currentUnit: 14661044448161044
+        newUnit: 15853853487137411
+        notionalInToken: 379986225124559638021
+        notionalInUSD: 879827
+        tradeNumber: 10
+    REN:
+        currentUnit: 14322484886094456781
+        newUnit: 15492884802220908109
+        notionalInToken: 372847481434790633905091
+        notionalInUSD: 395218
+        tradeNumber: 7
+    KNC:
+        currentUnit: 3321217267179696025
+        newUnit: 3597743715904927909
+        notionalInToken: 88091419468429116023504
+        notionalInUSD: 246655
+        tradeNumber: 42
+    LRC:
+        currentUnit: 20260870085903879514
+        newUnit: 21916540930577894725
+        notionalInToken: 527437413499458805751602
+        notionalInUSD: 287206
+        tradeNumber: 38
+    BAL:
+        currentUnit: 175543634098937293
+        newUnit: 189888648686832159
+        notionalInToken: 4569807709781204062710
+        notionalInUSD: 256274
+        tradeNumber: 1
+    UNI:
+        currentUnit: 4868806936278409794
+        newUnit: 3663738349392495226
+        notionalInToken: -383891677866500977582841
+        notionalInUSD: -11209636
+        tradeNumber: 23
+    AAVE:
+        currentUnit: 201705684730304727
+        newUnit: 218806327259722092
+        notionalInToken: 5447652046243883451994
+        notionalInUSD: 2122568
+        tradeNumber: 5
+    MTA:
+        currentUnit: 295026525267063863
+        newUnit: 371361356974397180
+        notionalInToken: 24317542538812725607001
+        notionalInUSD: 81463
+        tradeNumber: 5
+    SUSHI:
+        currentUnit: 1968786284093672866
+        newUnit: 2451805159185069535
+        notionalInToken: 153872508517708739012587
+        notionalInUSD: 2309626
+        tradeNumber: 3
+    CREAM:
+        currentUnit: 0
+        newUnit: 11494761584286758
+        notionalInToken: 3661819218664109742366
+        notionalInUSD: 484751
+        tradeNumber: 28
+    FARM:
+        currentUnit: 0
+        newUnit: 8735836649218458
+        notionalInToken: 2782924578178915496243
+        notionalInUSD: 821853
+        tradeNumber: 23

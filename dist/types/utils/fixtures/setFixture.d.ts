@@ -1,0 +1,30 @@
+import { JsonRpcProvider, Web3Provider } from "@ethersproject/providers";
+import { BigNumber } from "@ethersproject/bignumber";
+import { BasicIssuanceModule, CompoundLeverageModule, Controller, DebtIssuanceModule, GeneralIndexModule, GovernanceModule, IntegrationRegistry, SetToken, SetTokenCreator, StreamingFeeModule } from "../contracts/setV2";
+import { WETH9, StandardTokenMock } from "../contracts/index";
+import { Address } from "../types";
+export declare class SetFixture {
+    private _provider;
+    private _ownerAddress;
+    private _ownerSigner;
+    private _deployer;
+    feeRecipient: Address;
+    controller: Controller;
+    factory: SetTokenCreator;
+    integrationRegistry: IntegrationRegistry;
+    issuanceModule: BasicIssuanceModule;
+    debtIssuanceModule: DebtIssuanceModule;
+    streamingFeeModule: StreamingFeeModule;
+    compoundLeverageModule: CompoundLeverageModule;
+    governanceModule: GovernanceModule;
+    generalIndexModule: GeneralIndexModule;
+    weth: WETH9;
+    usdc: StandardTokenMock;
+    wbtc: StandardTokenMock;
+    dai: StandardTokenMock;
+    constructor(provider: Web3Provider | JsonRpcProvider, ownerAddress: Address);
+    initialize(): Promise<void>;
+    initializeStandardComponents(): Promise<void>;
+    createSetToken(components: Address[], units: BigNumber[], modules: Address[], manager?: Address, name?: string, symbol?: string): Promise<SetToken>;
+    approveAndIssueSetToken(setToken: SetToken, issueQuantity: BigNumber, to?: Address): Promise<any>;
+}

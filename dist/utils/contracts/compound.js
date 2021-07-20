@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// External Compound Contracts
+var Comp_1 = require("../../typechain/Comp");
+Object.defineProperty(exports, "Comp", { enumerable: true, get: function () { return Comp_1.Comp; } });
+var CompoundGovernorAlpha_1 = require("../../typechain/CompoundGovernorAlpha");
+Object.defineProperty(exports, "CompoundGovernorAlpha", { enumerable: true, get: function () { return CompoundGovernorAlpha_1.CompoundGovernorAlpha; } });
+var CompoundTimelock_1 = require("../../typechain/CompoundTimelock");
+Object.defineProperty(exports, "CompoundTimelock", { enumerable: true, get: function () { return CompoundTimelock_1.CompoundTimelock; } });
+var Comptroller_1 = require("../../typechain/Comptroller");
+Object.defineProperty(exports, "Comptroller", { enumerable: true, get: function () { return Comptroller_1.Comptroller; } });
+var CERc20_1 = require("../../typechain/CERc20");
+Object.defineProperty(exports, "CERc20", { enumerable: true, get: function () { return CERc20_1.CERc20; } });
+var CEther_1 = require("../../typechain/CEther");
+Object.defineProperty(exports, "CEther", { enumerable: true, get: function () { return CEther_1.CEther; } });
+var CompoundPriceOracleMock_1 = require("../../typechain/CompoundPriceOracleMock");
+Object.defineProperty(exports, "CompoundPriceOracleMock", { enumerable: true, get: function () { return CompoundPriceOracleMock_1.CompoundPriceOracleMock; } });
+var PriceOracleProxy_1 = require("../../typechain/PriceOracleProxy");
+Object.defineProperty(exports, "PriceOracleProxy", { enumerable: true, get: function () { return PriceOracleProxy_1.PriceOracleProxy; } });
+var Unitroller_1 = require("../../typechain/Unitroller");
+Object.defineProperty(exports, "Unitroller", { enumerable: true, get: function () { return Unitroller_1.Unitroller; } });
+var WhitePaperInterestRateModel_1 = require("../../typechain/WhitePaperInterestRateModel");
+Object.defineProperty(exports, "WhitePaperInterestRateModel", { enumerable: true, get: function () { return WhitePaperInterestRateModel_1.WhitePaperInterestRateModel; } });

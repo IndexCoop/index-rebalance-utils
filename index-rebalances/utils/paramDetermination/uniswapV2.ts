@@ -1,5 +1,5 @@
 import { BigNumber } from "ethers";
-import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import {
   ChainId,

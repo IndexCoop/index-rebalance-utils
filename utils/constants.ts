@@ -1,4 +1,5 @@
-import { BigNumber, constants } from "ethers";
+import { constants } from "ethers";
+import { BigNumber } from "@ethersproject/bignumber";
 
 const { AddressZero, MaxUint256, One, Two, Zero } = constants;
 

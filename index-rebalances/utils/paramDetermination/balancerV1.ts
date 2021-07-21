@@ -1,14 +1,14 @@
 import { BigNumber } from "ethers";
+import { BaseProvider } from "@ethersproject/providers";
 import { BigNumber as BigNumberJS } from "bignumber.js";
 
 import {
   SOR,
 } from "@balancer-labs/sor";
-import { ether, gWei } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether, gWei } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { ZERO } from "../../../utils/constants";
 import { ExchangeQuote, exchanges, Address } from "../../types";
-import { BaseProvider } from "@ethersproject/providers";
 import DEPENDENCY from "../../dependencies";
 
 const {
@@ -52,7 +52,7 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
   }
 
   return {
-    exchange: exchanges.KYBER,
+    exchange: exchanges.BALANCER,
     size: ZERO.toString(),
     data: "0x",
   } as ExchangeQuote;

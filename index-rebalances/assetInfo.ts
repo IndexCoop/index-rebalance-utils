@@ -1,4 +1,4 @@
-import { ether } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { BigNumber } from "@ethersproject/bignumber";
 import { Address } from "../utils/types";
@@ -42,7 +42,7 @@ export const ASSETS: Assets = {
   },
   KNC: {
     id: "kyber-network",
-    address: "0xdd974D5C2e2928deA5F71b9825b8b646686BD200",
+    address: "0xdeFA4e8a7bcBA345F687a2f1456F5Edd9CE97202",
     price: ether(3.31),
   },
   LRC: {
@@ -112,7 +112,7 @@ export const ASSETS: Assets = {
   },
   AXS: {
     id: "axie",
-    address: "0xf5d669627376ebd411e34b98f19c868c8aba5ada",
+    address: "0xBB0E17EF65F82Ab018d8EDd776e8DD940327B28b",
     price: ether(8.50),
   },
   SAND: {

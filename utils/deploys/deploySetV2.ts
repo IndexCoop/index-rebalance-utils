@@ -1,14 +1,9 @@
-import { Signer } from "ethers";
+import { Contract, Signer } from "ethers";
 import { Address } from "../types";
-import {
-  GeneralIndexModule,
-  SetToken,
-} from "../contracts/setV2";
-import { StandardTokenMock } from "../contracts/index";
 
-import { GeneralIndexModule__factory } from "@setprotocol/set-protocol-v2/dist/typechain/factories/GeneralIndexModule__factory";
-import { SetToken__factory } from "@setprotocol/set-protocol-v2/dist/typechain/factories/SetToken__factory";
-import { StandardTokenMock__factory } from "../../typechain/factories/StandardTokenMock__factory";
+import { abi as GIM_ABI } from "@setprotocol/set-protocol-v2/artifacts/contracts/protocol/modules/GeneralIndexModule.sol/GeneralIndexModule.json";
+import { abi as SET_TOKEN_ABI } from "@setprotocol/set-protocol-v2/artifacts/contracts/protocol/SetToken.sol/SetToken.json";
+import { abi as ERC20_ABI } from "@setprotocol/set-protocol-v2/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json";
 
 export default class DeploySetV2 {
   private _deployerSigner: Signer;
@@ -17,15 +12,15 @@ export default class DeploySetV2 {
     this._deployerSigner = deployerSigner;
   }
 
-  public async getTokenMock(token: Address): Promise<StandardTokenMock> {
-    return await new StandardTokenMock__factory(this._deployerSigner).attach(token);
+  public async getTokenMock(token: Address): Promise<any> {
+    return await new Contract(token, ERC20_ABI, this._deployerSigner);
   }
 
-  public async getSetToken(setToken: Address): Promise<SetToken> {
-    return await new SetToken__factory(this._deployerSigner).attach(setToken);
+  public async getSetToken(setToken: Address): Promise<any> {
+    return await new Contract(setToken, SET_TOKEN_ABI, this._deployerSigner);
   }
 
-  public async getGeneralIndexModule(indexModule: Address): Promise<GeneralIndexModule> {
-    return await new GeneralIndexModule__factory(this._deployerSigner).attach(indexModule);
+  public async getGeneralIndexModule(indexModule: Address): Promise<any> {
+    return await new Contract(indexModule, GIM_ABI, this._deployerSigner);
   }
 }

@@ -4,7 +4,7 @@ import {
   ChainId,
 } from "@uniswap/sdk";
 
-import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import {
   Fetcher as kyberFetcher,

@@ -1,5 +1,7 @@
 import * as _ from "lodash";
 
+import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
+
 import {
   calculateSetValue,
   calculateNotionalInToken,
@@ -7,7 +9,6 @@ import {
 } from "./setMath";
 
 import { ZERO, PRECISE_UNIT } from "../../utils/constants";
-import { ether, preciseDiv, preciseMul } from "../../utils/common/index";
 import { BigNumber } from "ethers";
 
 import {

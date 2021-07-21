@@ -8,7 +8,7 @@ import {
   Trade,
 } from "@sushiswap/sdk";
 
-import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { ExchangeQuote, exchanges, Address } from "../../types";
 import { ADDRESS_ZERO, ZERO } from "../../../utils/constants";

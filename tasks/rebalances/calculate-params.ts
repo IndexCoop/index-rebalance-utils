@@ -2,6 +2,8 @@ import * as _ from "lodash";
 
 import { BigNumber, Signer } from "ethers";
 import { task } from "hardhat/config";
+import { ether } from "@setprotocol/index-coop-contracts/dist/utils/common";
+
 import {
   getBalancerV1Quote,
   getKyberDMMQuote,
@@ -13,7 +15,6 @@ import { indices } from "../../index-rebalances/indices";
 import { ExchangeQuote, StrategyInfo } from "../../index-rebalances/types";
 
 import DeployHelper from "../../utils/deploys";
-import { ether } from "@setprotocol/index-coop-contracts/utils/common";
 
 const FIFTY_BPS_IN_PERCENT = ether(.5);
 const FORTY_BPS_IN_PERCENT = ether(.4);

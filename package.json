@@ -33,7 +33,6 @@
     "patch-hardhat-typechain": "node scripts/patch-hardhat-typechain.js",
     "precommit": "lint-staged",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn clean && yarn build:npm",
     "prepack": "if [[ \"$(basename \"$PWD\")\" == \"index-coop-contracts\" ]]; then echo \"CANNOT PUBLISH FROM THIS REPO\"; exit 1; fi;",
     "params:calc:dpi": "yarn build:lazy && BUILT=true yarn calculate-params --index DPI",
     "params:calc:mvi": "yarn build:lazy && BUILT=true yarn calculate-params --index MVI",

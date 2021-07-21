@@ -1,4 +1,4 @@
-import { preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 import { ZERO } from "../../../utils/constants";
 import { BigNumber } from "ethers";
 
@@ -14,7 +14,6 @@ export async function calculateNewAllocations(
 ): Promise<RebalanceSummary[]> {
   const rebalanceData: RebalanceSummary[] = [];
 
-  console.log(setValue.toString());
   const totalSupply = await setToken.totalSupply();
   for (let i = 0; i < Object.keys(strategyConstants).length; i++) {
     const key = Object.keys(strategyConstants)[i];
@@ -34,6 +33,7 @@ export async function calculateNewAllocations(
       tradeCount: notionalInToken.div(assetObj.maxTradeSize).abs().add(1),
       isBuy: notionalInToken.gt(ZERO),
       exchange: assetObj.exchange,
+      exchangeData: assetObj.exchangeData,
       maxTradeSize: assetObj.maxTradeSize,
       coolOffPeriod: assetObj.coolOffPeriod,
     });
@@ -68,6 +68,7 @@ export async function calculateNewAllocationsMultisig(
       tradeCount: notionalInToken.div(assetObj.maxTradeSize).abs().add(1),
       isBuy: notionalInToken.gt(ZERO),
       exchange: assetObj.exchange,
+      exchangeData: assetObj.exchangeData,
       maxTradeSize: assetObj.maxTradeSize,
       coolOffPeriod: assetObj.coolOffPeriod,
     });

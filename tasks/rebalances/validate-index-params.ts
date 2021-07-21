@@ -4,7 +4,7 @@ import * as fs from "fs";
 import { task } from "hardhat/config";
 import { Signer } from "ethers";
 
-import { preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import {
   GeneralIndexModule,

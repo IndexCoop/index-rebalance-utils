@@ -90,7 +90,7 @@
     "@ethersproject/abstract-signer": "5.0.9",
     "@ethersproject/bignumber": "5.0.12",
     "@ethersproject/providers": "5.0.17",
-    "@setprotocol/index-coop-contracts": "0.0.24",
+    "@setprotocol/index-coop-contracts": "0.0.25",
     "@setprotocol/set-protocol-v2": "0.0.46",
     "@sushiswap/sdk": "^5.0.0-canary.23",
     "@uniswap/sdk": "^3.0.3",
@@ -124,9 +124,6 @@
     }
   },
   "lint-staged": {
-    "contracts/**/*.sol": [
-      "yarn lint-sol --fix"
-    ],
     "test/**/*.ts": [
       "yarn lint-ts --fix"
     ],

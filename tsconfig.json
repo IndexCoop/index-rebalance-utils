@@ -18,12 +18,11 @@
     "skipLibCheck": true,
   },
   "include": [
-    "./test/**/*.ts",
-    "./utils/**/*.ts",
-    "./deploy/**/*.ts",
+    "./index-rebalances/**/*.ts",
     "./typechain/**/*.ts",
-    "./types/**/*.ts",
     "./tasks/**/*.ts",
+    "./typings/**/*.ts",
+    "./utils/**/*.ts",
   ],
   "exclude": [
     "node_modules",

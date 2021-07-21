@@ -14,7 +14,7 @@ export interface IndexInfo {
   calculateAssetAllocation(
     setToken: SetToken,
     strategyConstants: StrategyObject,
-    setTokenValue: BigNumber
+    setTokenValue: BigNumber,
   ): Promise<RebalanceSummary[]>;
 }
 
@@ -22,11 +22,10 @@ export interface AssetInfo {
   address: Address;
   maxTradeSize: BigNumber;
   exchange: string;
-  exchangeData?: string;
+  exchangeData: string;
   coolOffPeriod: BigNumber;
   currentUnit: BigNumber;
   input: BigNumber;
-  decimals?: BigNumber;
 }
 
 export interface StrategyInfo {
@@ -47,7 +46,9 @@ export let exchanges: Exchanges = {
   NONE: "",
   UNISWAP: "UniswapV2IndexExchangeAdapter",
   SUSHISWAP: "SushiswapIndexExchangeAdapter",
-  BALANCER: ";B;alancerV1IndexExchangeAdapter",
+  BALANCER: "BalancerV1IndexExchangeAdapter",
+  UNISWAP_V3: "UniswapV3IndexExchangeAdapter",
+  KYBER: "KyberV3IndexExchangeAdapter",
 };
 
 export interface AssetStrategy {
@@ -57,9 +58,9 @@ export interface AssetStrategy {
   maxTradeSize: BigNumber;
   coolOffPeriod: BigNumber;
   exchange: string;
+  exchangeData: string;
   currentUnit: BigNumber;
   price: BigNumber;
-  supply?: BigNumber;
 }
 
 export interface StrategyObject {
@@ -74,18 +75,10 @@ export interface RebalanceSummary {
   notionalInUSD: BigNumber;
   isBuy: boolean | undefined;
   exchange: string;
+  exchangeData: string;
   maxTradeSize: BigNumber;
   coolOffPeriod: BigNumber;
   tradeCount: BigNumber;
-}
-
-export interface RebalanceSummaryLight {
-  asset: string;
-  currentUnit: BigNumber;
-  newUnit: BigNumber;
-  notionalInToken: BigNumber;
-  notionalInUSD: BigNumber;
-  isBuy: boolean | undefined;
 }
 
 export interface ParamSetting {
@@ -105,6 +98,7 @@ export interface RebalanceReport {
   summary: RebalanceSummary[];
   maxTradeSizeParams: ParamSetting;
   exchangeParams: ParamSetting;
+  exchangeDataParams: ParamSetting;
   coolOffPeriodParams: ParamSetting;
   rebalanceParams: RebalanceParams;
   tradeOrder: string;

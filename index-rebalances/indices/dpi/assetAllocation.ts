@@ -1,4 +1,4 @@
-import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { ZERO, PRECISE_UNIT } from "../../../utils/constants";
 import { BigNumber } from "ethers";
@@ -45,6 +45,7 @@ export async function calculateNewAllocations(
       tradeCount: ZERO,
       isBuy: undefined,
       exchange: assetObj.exchange,
+      exchangeData: assetObj.exchangeData,
       maxTradeSize: assetObj.maxTradeSize,
       coolOffPeriod: assetObj.coolOffPeriod,
     });

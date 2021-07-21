@@ -6,6 +6,10 @@ require("@nomiclabs/hardhat-waffle");
 require("hardhat-typechain");
 require("hardhat-deploy");
 require("./tasks");
+// These tasks import from typechain and must be conditionally required
+if (process.env.BUILT === "true") {
+    require("./tasks/rebalances");
+}
 var forkingConfig = {
     url: "https://eth-mainnet.alchemyapi.io/v2/" + process.env.ALCHEMY_TOKEN,
     blockNumber: 11649166,

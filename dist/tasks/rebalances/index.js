@@ -10,7 +10,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./calculate-new-dpi-position"), exports);
 __exportStar(require("./calculate-new-index-position"), exports);
 __exportStar(require("./validate-index-params"), exports);
 __exportStar(require("./calculate-params"), exports);

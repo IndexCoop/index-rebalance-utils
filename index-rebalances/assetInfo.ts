@@ -1,4 +1,4 @@
-import { ether } from "@setprotocol/index-coop-contracts/utils/common";
+import { ether } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { BigNumber } from "@ethersproject/bignumber";
 import { Address } from "../utils/types";

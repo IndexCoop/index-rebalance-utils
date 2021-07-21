@@ -36,9 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var GeneralIndexModule__factory_1 = require("@setprotocol/set-protocol-v2/dist/typechain/factories/GeneralIndexModule__factory");
-var SetToken__factory_1 = require("@setprotocol/set-protocol-v2/dist/typechain/factories/SetToken__factory");
-var StandardTokenMock__factory_1 = require("../../typechain/factories/StandardTokenMock__factory");
+var ethers_1 = require("ethers");
+var GeneralIndexModule_json_1 = require("@setprotocol/set-protocol-v2/artifacts/contracts/protocol/modules/GeneralIndexModule.sol/GeneralIndexModule.json");
+var SetToken_json_1 = require("@setprotocol/set-protocol-v2/artifacts/contracts/protocol/SetToken.sol/SetToken.json");
+var ERC20_json_1 = require("@setprotocol/set-protocol-v2/artifacts/@openzeppelin/contracts/token/ERC20/ERC20.sol/ERC20.json");
 var DeploySetV2 = /** @class */ (function () {
     function DeploySetV2(deployerSigner) {
         this._deployerSigner = deployerSigner;
@@ -47,7 +48,7 @@ var DeploySetV2 = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, new StandardTokenMock__factory_1.StandardTokenMock__factory(this._deployerSigner).attach(token)];
+                    case 0: return [4 /*yield*/, new ethers_1.Contract(token, ERC20_json_1.abi, this._deployerSigner)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -57,7 +58,7 @@ var DeploySetV2 = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, new SetToken__factory_1.SetToken__factory(this._deployerSigner).attach(setToken)];
+                    case 0: return [4 /*yield*/, new ethers_1.Contract(setToken, SetToken_json_1.abi, this._deployerSigner)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -67,7 +68,7 @@ var DeploySetV2 = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, new GeneralIndexModule__factory_1.GeneralIndexModule__factory(this._deployerSigner).attach(indexModule)];
+                    case 0: return [4 /*yield*/, new ethers_1.Contract(indexModule, GeneralIndexModule_json_1.abi, this._deployerSigner)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });

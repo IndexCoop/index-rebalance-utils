@@ -1,7 +1,7 @@
 {
-  "name": "@setprotocol/index-coop-contracts",
+  "name": "@setprotocol/index-rebalance-utils",
   "version": "0.0.1",
-  "description": "",
+  "description": "Utilities for param and allocation determination for Set Protocol indices.",
   "main": "dist",
   "types": "dist/types",
   "files": [

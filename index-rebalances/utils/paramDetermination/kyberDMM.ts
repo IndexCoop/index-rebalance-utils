@@ -1,4 +1,5 @@
 import { BigNumber } from "ethers";
+import { BaseProvider } from "@ethersproject/providers";
 
 import {
   ChainId,
@@ -27,16 +28,17 @@ const {
 const KYBER_FACTORY = "0x833e4083B7ae46CeA85695c4f7ed25CDAd8886dE";
 
 export async function getKyberDMMQuote(
+  provider: BaseProvider,
   tokenAddress: Address,
   targetPriceImpact: BigNumber
 ): Promise<ExchangeQuote> {
-  const token: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, tokenAddress);
-  const weth: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, ETH_ADDRESS);
-  const wbtc: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, BTC_ADDRESS);
-  const usdc: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, USDC_ADDRESS);
+  const token: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, tokenAddress, provider);
+  const weth: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, ETH_ADDRESS, provider);
+  const wbtc: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, BTC_ADDRESS, provider);
+  const usdc: kyberToken = await kyberFetcher.fetchTokenData(ChainId.MAINNET, USDC_ADDRESS, provider);
 
   const trades = await kyberTrade.bestTradeExactIn(
-    await getKyberDMMPairs([token, weth, wbtc, usdc]),
+    await getKyberDMMPairs(provider, [token, weth, wbtc, usdc]),
     new kyberTokenAmount(weth, ether(1).toString()),
     token,
     {maxNumResults: 3, maxHops: 1},
@@ -68,7 +70,7 @@ export async function getKyberDMMQuote(
   } as ExchangeQuote;
 }
 
-async function getKyberDMMPairs(tokens: kyberToken[]): Promise<kyberPair[][]> {
+async function getKyberDMMPairs(provider: BaseProvider, tokens: kyberToken[]): Promise<kyberPair[][]> {
   const pairs: kyberPair[][] = [];
   for (let i = 0; i < tokens.length - 1; i++) {
     for (let j = 1; j < tokens.length - i - 1; j++) {
@@ -77,7 +79,7 @@ async function getKyberDMMPairs(tokens: kyberToken[]): Promise<kyberPair[][]> {
 
       let assetPairs;
       try {
-        assetPairs = await kyberFetcher.fetchPairData(tokenOne, tokenTwo, KYBER_FACTORY);
+        assetPairs = await kyberFetcher.fetchPairData(tokenOne, tokenTwo, KYBER_FACTORY, provider);
       } catch (error) {
         continue;
       }

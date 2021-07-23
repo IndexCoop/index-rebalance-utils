@@ -31,9 +31,9 @@ task("calculate-params", "Calculates new rebalance details for an index")
       console.log(assets[i]);
       const quotes: ExchangeQuote[] = [
         await getSushiswapQuote(deployHelper, info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
-        await getUniswapV2Quote(info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
+        await getUniswapV2Quote(hre.ethers.provider, info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
         await getUniswapV3Quote(deployHelper, info[assets[i]].address, FORTY_BPS_IN_PERCENT),
-        await getKyberDMMQuote(info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
+        await getKyberDMMQuote(hre.ethers.provider, info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
         await getBalancerV1Quote(hre.ethers.provider, info[assets[i]].address, FIFTY_BPS_IN_PERCENT),
       ];
       console.log(quotes.reduce((p, c) => BigNumber.from(p.size).gt(BigNumber.from(c.size)) ? p : c));

@@ -1,4 +1,5 @@
 import { BigNumber } from "ethers";
+import { BaseProvider } from "@ethersproject/providers";
 import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import {
@@ -24,14 +25,17 @@ const {
   USDC_ADDRESS,
 } = DEPENDENCY;
 
-export async function getUniswapV2Quote(tokenAddress: Address, targetPriceImpact: BigNumber): Promise<ExchangeQuote> {
-  const token: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, tokenAddress);
-  const weth: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, ETH_ADDRESS);
-  const wbtc: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, BTC_ADDRESS);
-  const usdc: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, USDC_ADDRESS);
+export async function getUniswapV2Quote(
+  provider: BaseProvider,
+  tokenAddress: Address,
+  targetPriceImpact: BigNumber): Promise<ExchangeQuote> {
+  const token: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, tokenAddress, provider);
+  const weth: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, ETH_ADDRESS, provider);
+  const wbtc: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, BTC_ADDRESS, provider);
+  const usdc: Token = await Fetcher.fetchTokenData(ChainId.MAINNET, USDC_ADDRESS, provider);
 
   const trades = Trade.bestTradeExactIn(
-    await getUniswapV2Pairs([token, weth, wbtc, usdc]),
+    await getUniswapV2Pairs(provider, [token, weth, wbtc, usdc]),
     new TokenAmount(weth, ether(1).toString()),
     token,
     {maxNumResults: 3, maxHops: 2},
@@ -60,7 +64,7 @@ export async function getUniswapV2Quote(tokenAddress: Address, targetPriceImpact
   } as ExchangeQuote;
 }
 
-async function getUniswapV2Pairs(tokens: Token[]): Promise<Pair[]> {
+async function getUniswapV2Pairs(provider: BaseProvider, tokens: Token[]): Promise<Pair[]> {
   const pairs: Pair[] = [];
   for (let i = 0; i < tokens.length - 1; i++) {
     for (let j = 1; j < tokens.length - i - 1; j++) {
@@ -69,7 +73,7 @@ async function getUniswapV2Pairs(tokens: Token[]): Promise<Pair[]> {
 
       let pair;
       try {
-        pair = await Fetcher.fetchPairData(tokenOne, tokenTwo);
+        pair = await Fetcher.fetchPairData(tokenOne, tokenTwo, provider);
       } catch (error) {
         continue;
       }

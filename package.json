@@ -1,6 +1,6 @@
 {
   "name": "@setprotocol/index-rebalance-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utilities for param and allocation determination for Set Protocol indices.",
   "main": "dist",
   "types": "dist/types",

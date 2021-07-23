@@ -51,7 +51,7 @@ export async function getKyberDMMQuote(
     const priceImpactRatio = preciseDiv(
       targetPriceImpact,
       // Price impact measured in percent so fee must be as well
-      ether(parseFloat(trades[0].priceImpact.toSignificant(18)) - fee.toNumber() / 10 ** 16)
+      ether((parseFloat(trades[0].priceImpact.toSignificant(18)) - fee.toNumber() / 10 ** 16).toFixed(18))
     );
 
     return {

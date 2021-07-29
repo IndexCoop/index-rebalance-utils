@@ -1,5 +1,4 @@
 import { BigNumber } from "ethers";
-import { defaultAbiCoder } from "ethers/lib/utils";
 import { BaseProvider } from "@ethersproject/providers";
 import { ether, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
@@ -54,7 +53,7 @@ export async function getUniswapV2Quote(
       size: preciseMul(
         ether(parseFloat(trades[0].outputAmount.toExact())).div(BigNumber.from(10).pow(18 - token.decimals)),
         priceImpactRatio).toString(),
-      data: hops > 1 ? defaultAbiCoder.encode(["address"], [trades[0].route.path[1].address]) : "0x",
+      data: hops > 1 ? trades[0].route.path[1].address : "0x",
     } as ExchangeQuote;
   }
 

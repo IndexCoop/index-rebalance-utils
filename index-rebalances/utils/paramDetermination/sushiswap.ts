@@ -1,5 +1,4 @@
 import { BigNumber } from "ethers";
-import { defaultAbiCoder } from "ethers/lib/utils";
 
 import {
   ChainId,
@@ -53,7 +52,7 @@ export async function getSushiswapQuote(deployHelper: DeployHelper, tokenAddress
       size: preciseMul(
         ether(parseFloat(trades[0].outputAmount.toExact())).div(BigNumber.from(10).pow(18 - token.decimals)),
         priceImpactRatio).toString(),
-        data: hops > 1 ? defaultAbiCoder.encode(["address"], [trades[0].route.path[1].address]) : "0x",
+      data: hops > 1 ? trades[0].route.path[1].address : "0x",
     } as ExchangeQuote;
   }
 

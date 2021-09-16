@@ -5,7 +5,7 @@ import { BigNumber as BigNumberJS } from "bignumber.js";
 import {
   SOR,
 } from "@balancer-labs/sor";
-import { ether, gWei } from "@setprotocol/index-coop-contracts/dist/utils/common";
+import { ether, gWei, preciseDiv, preciseMul } from "@setprotocol/index-coop-contracts/dist/utils/common";
 
 import { ZERO } from "../../../utils/constants";
 import { ExchangeQuote, exchanges, Address } from "../../types";
@@ -15,6 +15,8 @@ const {
   ETH_ADDRESS,
 } = DEPENDENCY;
 
+// Usage note, targetPriceImpact should be the impact including fees! Balancer pool fees can change and it's not easy to extract from the data
+// we have so put in a number that is net of fees.
 export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: Address, targetPriceImpact: BigNumber): Promise<ExchangeQuote> {
   const sor = new SOR(
     provider,
@@ -26,7 +28,7 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
   await sor.fetchFilteredPairPools(ETH_ADDRESS, tokenAddress);
   await sor.setCostOutputToken(tokenAddress);   // Set cost to limit small trades
 
-  const inputAmount = toBigNumberJS(ether(1));
+  const inputAmount = toBigNumberJS(ether(2));
   const [
     ,
     returnAmountV1,
@@ -42,11 +44,11 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
     const effectivePrice = inputAmount.div(returnAmountV1);
 
     const priceImpact = ether(effectivePrice.div(marketSpV1Scaled.div(10 ** 18)).toNumber()).sub(ether(1));
-    const priceImpactRatio = targetPriceImpact.div(priceImpact.mul(100));
+    const priceImpactRatio = preciseDiv(targetPriceImpact, priceImpact.mul(100));
 
     return {
       exchange: exchanges.BALANCER,
-      size: fromBigNumberJS(returnAmountV1).mul(priceImpactRatio).toString(),
+      size: preciseMul(fromBigNumberJS(returnAmountV1), priceImpactRatio).toString(),
       data: "0x",
     } as ExchangeQuote;
   }

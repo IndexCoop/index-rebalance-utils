@@ -59,13 +59,24 @@ export async function getUniswapV3Quote(deployHelper: DeployHelper, token: Addre
 
   return {
     exchange: exchanges.UNISWAP_V3,
-    size:   (await quoterInstance.callStatic.quoteExactInputSingle(
-      ETH_ADDRESS,
-      token,
-      FeeAmount.MEDIUM,
-      ether(10000),
-      sqrtPriceLimit
-    )).toString(),
+    size: (
+      await quoterInstance.callStatic.quoteExactInputSingle(
+        ETH_ADDRESS,
+        token,
+        FeeAmount.MEDIUM,
+        ether(10000),
+        sqrtPriceLimit
+      )
+    ).toString(),
+    sellSize: (
+      await quoterInstance.callStatic.quoteExactInputSingle(
+        token,
+        ETH_ADDRESS,
+        FeeAmount.MEDIUM,
+        ether(10000),
+        sqrtPriceLimit
+      )
+    ).toString(),
     data: hexZeroPad(hexlify(FeeAmount.MEDIUM), 3),
   } as ExchangeQuote;
 }

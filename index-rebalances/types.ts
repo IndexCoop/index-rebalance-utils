@@ -39,6 +39,7 @@ export interface Exchanges {
 export interface ExchangeQuote {
   exchange: string;
   size: string;
+  sellSize?: string;
   data: string;
 }
 

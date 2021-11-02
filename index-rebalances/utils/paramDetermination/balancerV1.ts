@@ -25,7 +25,7 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
     1,      // ChainId = mainnet (1)
     "https://storageapi.fleek.co/balancer-bucket/balancer-exchange/pools"
   );
-  await sor.fetchFilteredPairPools(ETH_ADDRESS, tokenAddress);
+  await sor.fetchPools();
   await sor.setCostOutputToken(tokenAddress);   // Set cost to limit small trades
 
   const inputAmount = toBigNumberJS(ether(2));

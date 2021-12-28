@@ -20,9 +20,9 @@ const {
 const UNI_V3_QUOTER = "0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6";
 const UNI_V3_FACTORY = "0x1F98431c8aD98523631AE4a59f267346ea31F984";
 
-export async function getUniswapV3Quote(deployHelper: DeployHelper, token: Address, targetPriceImpact: BigNumber): Promise<ExchangeQuote> {
+export async function getUniswapV3Quote(deployHelper: DeployHelper, token: Address, targetPriceImpact: BigNumber, feeAmount: number = FeeAmount.MEDIUM): Promise<ExchangeQuote> {
   const factoryInstance = await deployHelper.external.getUniswapV3FactoryInstance(UNI_V3_FACTORY);
-  const poolAddress = await factoryInstance.getPool(token, ETH_ADDRESS, FeeAmount.MEDIUM);
+  const poolAddress = await factoryInstance.getPool(token, ETH_ADDRESS, feeAmount);
   if (poolAddress == ADDRESS_ZERO) {
     return {
       exchange: exchanges.UNISWAP_V3,
@@ -62,10 +62,10 @@ export async function getUniswapV3Quote(deployHelper: DeployHelper, token: Addre
     size:   (await quoterInstance.callStatic.quoteExactInputSingle(
       ETH_ADDRESS,
       token,
-      FeeAmount.MEDIUM,
+      feeAmount,
       ether(10000),
       sqrtPriceLimit
     )).toString(),
-    data: hexZeroPad(hexlify(FeeAmount.MEDIUM), 3),
+    data: hexZeroPad(hexlify(feeAmount), 3),
   } as ExchangeQuote;
 }

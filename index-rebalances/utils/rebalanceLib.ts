@@ -37,6 +37,8 @@ export function getRebalanceInputs(
   };
 }
 
+// DPI allocations are a function of token market cap. Some tokens (ex: uni) are "flexibly capped"
+// at 25% of the index even though their natural weight would be higher.
 export function calculateNewDPIAllocations(
   totalSupply: BigNumber,
   strategyConstants: StrategyObject,
@@ -45,8 +47,10 @@ export function calculateNewDPIAllocations(
   const rebalanceData: RebalanceSummaryLight[] = [];
 
   let sumOfCappedAllocations = ZERO;
+  let cappedAssetAllocationSum = ZERO;
   const cappedAssets: string[] = [];
 
+  // `divisor`: the total market value of all the component tokens in the market.
   const divisor = Object.entries(strategyConstants).map(([, obj]) => {
     return obj.input.mul(obj.price);
   }).reduce((a, b) => a.add(b), ZERO).div(dpiValue);
@@ -57,11 +61,25 @@ export function calculateNewDPIAllocations(
 
     let newUnit = assetObj.input.mul(PRECISE_UNIT).div(divisor);
 
+    // `allocation`: the natural % weight a token would have in index based on its market value
     let allocation: BigNumber = strategyConstants[key].price.mul(newUnit).div(dpiValue);
+
+    // Cap if a token's natural weight is over the flexible cap target (25%)
     if (allocation.gt(ether(.25))) {
       cappedAssets.push(key);
-      newUnit = ether(.25).mul(dpiValue).div(strategyConstants[key].price);
-      allocation = ether(.25);
+
+      // `currentAllocation`: the current % weight the component has in the index
+      const currentAllocation: BigNumber = strategyConstants[key]
+        .price
+        .mul(strategyConstants[key].currentUnit)
+        .div(dpiValue);
+
+      // Flexible cap is the average between the current allocation and the target
+      const flexibleCapAllocation = ether(.25).add(currentAllocation).div(2);
+
+      newUnit = flexibleCapAllocation.mul(dpiValue).div(strategyConstants[key].price);
+      allocation = flexibleCapAllocation;
+      cappedAssetAllocationSum = cappedAssetAllocationSum.add(flexibleCapAllocation);
     }
     sumOfCappedAllocations = sumOfCappedAllocations.add(allocation);
     rebalanceData.push({
@@ -73,8 +91,6 @@ export function calculateNewDPIAllocations(
       isBuy: undefined,
     });
   }
-
-  const cappedAssetAllocationSum = ether(.25).mul(cappedAssets.length);
 
   for (let i = 0; i < rebalanceData.length; i++) {
     const assetObj = strategyConstants[rebalanceData[i].asset];

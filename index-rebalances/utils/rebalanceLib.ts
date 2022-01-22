@@ -37,8 +37,9 @@ export function getRebalanceInputs(
   };
 }
 
-// DPI allocations are a function of token market cap. Some tokens (ex: uni) are "flexibly capped"
-// at 25% of the index even though their natural weight would be higher.
+// DPI allocations are a function of token market cap. Any token which would comprise more than 25%
+// of the total value in the Set is "flexibly capped" at 25% of the index even though their natural
+// weight would be higher
 export function calculateNewDPIAllocations(
   totalSupply: BigNumber,
   strategyConstants: StrategyObject,

@@ -24,8 +24,8 @@ jobs:
           yarn test
   publish:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/master' }}
-    needs: [build]
+    # if: ${{ github.ref == 'refs/heads/master' }}
+    needs: [build-and-test]
     steps:
       - uses: actions/checkout@v2
       - name: copy env

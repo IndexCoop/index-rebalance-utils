@@ -1,7 +1,7 @@
 {
   "name": "@indexcoop/index-rebalance-utils",
   "version": "0.0.8",
-  "description": "Utilities for param and allocation determination for Index Coop indices.",
+  "description": "Utilities for param and allocation determination for IndexCoop indices.",
   "main": "dist",
   "types": "dist/types",
   "files": [

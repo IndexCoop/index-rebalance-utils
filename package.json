@@ -1,7 +1,7 @@
 {
-  "name": "@setprotocol/index-rebalance-utils",
+  "name": "@indexcoop/index-rebalance-utils",
   "version": "0.0.8",
-  "description": "Utilities for param and allocation determination for Set Protocol indices.",
+  "description": "Utilities for param and allocation determination for IndexCoop indices.",
   "main": "dist",
   "types": "dist/types",
   "files": [
@@ -33,7 +33,7 @@
     "patch-hardhat-typechain": "node scripts/patch-hardhat-typechain.js",
     "precommit": "lint-staged",
     "prepare": "yarn build",
-    "prepack": "if [[ \"$(basename \"$PWD\")\" == \"index-coop-contracts\" ]]; then echo \"CANNOT PUBLISH FROM THIS REPO\"; exit 1; fi;",
+    "prepack": "if [[ \"$(basename \"$PWD\")\" == \"index-coop-smart-contracts\" ]]; then echo \"CANNOT PUBLISH FROM THIS REPO\"; exit 1; fi;",
     "params:calc:dpi": "yarn build:lazy && BUILT=true yarn calculate-params --index DPI",
     "params:calc:mvi": "yarn build:lazy && BUILT=true yarn calculate-params --index MVI",
     "rebalance:calc:dpi": "yarn build:lazy && BUILT=true yarn calculate-index-units --index DPI",
@@ -41,6 +41,7 @@
     "rebalance:validate:dpi": "yarn build:lazy && BUILT=true yarn validate-index-rebalance --index DPI",
     "rebalance:validate:mvi": "yarn build:lazy && BUILT=true yarn validate-index-rebalance --index MVI",
     "rename-extensions": "for f in typechain/*.d.ts; do mv -- \"$f\" \"${f%.d.ts}.ts\"; done",
+    "semantic-release": "semantic-release --branches master",
     "test": "npx hardhat test --network localhost",
     "test:fork": "FORK=true npx hardhat test",
     "transpile": "tsc",
@@ -52,11 +53,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SetProtocol/index-coop-contracts.git"
+    "url": "git+https://github.com/IndexCoop/index-rebalance-utils.git"
   },
   "author": "felix2feng",
   "license": "MIT",
-  "homepage": "https://github.com/SetProtocol",
+  "homepage": "https://github.com/IndexCoop",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.1",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
@@ -77,6 +78,7 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "lodash": "^4.17.4",
+    "semantic-release": "^19.0.2",
     "ts-generator": "^0.1.1",
     "ts-node": "^8.10.1",
     "tslint": "^6.1.3",

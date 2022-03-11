@@ -28,9 +28,9 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
   await sor.fetchPools();
   await sor.setCostOutputToken(tokenAddress);   // Set cost to limit small trades
 
-  const inputAmount = toBigNumberJS(ether(2));
+  const inputAmount = toBigNumberJS(ether(176.55));
   const [
-    ,
+    swaps,
     returnAmountV1,
     marketSpV1Scaled,
   ] = await sor.getSwaps(
@@ -39,7 +39,7 @@ export async function getBalancerV1Quote(provider: BaseProvider, tokenAddress: A
     "swapExactIn",
     inputAmount
   );
-
+  console.log(swaps, returnAmountV1.toString());
   if (!returnAmountV1.eq(0)) {
     const effectivePrice = inputAmount.div(returnAmountV1);
 
